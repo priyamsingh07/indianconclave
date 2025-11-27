@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Indian Conclave (TIC) - Model United Nations</title>
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      color: #e0e6f0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Container */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    /* Header */
+    header {
+      background: #0b132b; /* Dark Blue */
+      color: #e0e6f0;
+      padding: 40px 20px 50px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(11, 19, 43, 0.7);
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-size: 3.2rem;
+      margin: 0;
+      letter-spacing: 3px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    }
+    header p {
+      margin-top: 12px;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: #a9bcd0; /* Light steel blue */
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+    nav {
+      margin-top: 20px;
+    }
+    nav a {
+      color: #a9bcd0; /* Light steel blue */
+      font-weight: 700;
+      margin: 0 15px;
+      font-size: 1.1rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: #1b263b; /* Slightly lighter dark blue */
+      outline: none;
+      color: #dbe9ff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    /* Section styles */
+    section {
+      background: #162a4ddd; /* Semi-transparent dark blue */
+      margin-top: 40px;
+      padding: 35px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      transition: box-shadow 0.3s ease;
+      color: #dbe9ff;
+    }
+    section:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+    }
+    h2 {
+      color: #a9bcd0;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #415a77;
+      padding-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+    }
+    p {
+      font-size: 1.15rem;
+      color: #dbe9ff;
+      margin-bottom: 1.3em;
+    }
+    ul.info-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0 0 30px 0;
+      font-size: 1.15rem;
+      color: #cbd6e7;
+    }
+    ul.info-list li {
+      margin-bottom: 12px;
+      font-weight: 600;
+      position: relative;
+      padding-left: 25px;
+    }
+    ul.info-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #82aaff;
+      font-weight: 900;
+      font-size: 1.2rem;
+      top: 2px;
+      text-shadow: 0 0 2px rgba(0,0,0,0.3);
+    }
+    /* Forms container */
+    .forms {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .form-link {
+      background: #1b263b;
+      color: #82aaff;
+      padding: 18px 35px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 15px rgba(130, 170, 255, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      min-width: 220px;
+      user-select: none;
+    }
+    .form-link:hover,
+    .form-link:focus {
+      background: #415a77;
+      box-shadow: 0 8px 25px rgba(130, 170, 255, 0.9);
+      outline: none;
+      cursor: pointer;
+      color: #dbe9ff;
+      text-decoration: none;
+    }
+    /* Footer */
+    footer {
+      background: #0b132b;
+      color: #a9bcd0;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      margin-top: 60px;
+      user-select: none;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      section {
+        padding: 25px 20px;
+        margin-top: 30px;
+      }
+      h2 {
+        font-size: 1.7rem;
+      }
+      .forms {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .form-link {
+        min-width: 100%;
+        font-size: 1.1rem;
+        padding: 15px 0;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 1rem;
+      }
+    }
+    /* Image columns for team */
+    .team-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 25px;
+    }
+    .team-member {
+      background: #1b263b;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(130, 170, 255, 0.25);
+      max-width: 400px;
+      flex: 1 1 350px;
+      padding: 25px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      color: #dbe9ff;
+    }
+    .team-member:hover {
+      box-shadow: 0 10px 30px rgba(130, 170, 255, 0.45);
+    }
+    .team-member img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #82aaff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    .team-member img:hover {
+      transform: scale(1.05);
+    }
+    .team-member h3 {
+      margin: 0 0 8px;
+      color: #82aaff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+    .team-member h4 {
+      margin: 0 0 15px;
+      font-weight: 600;
+      color: #a9bcd0;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+    .team-member p {
+      font-size: 1rem;
+      color: #cbd6e7;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Indian Conclave (TIC)</h1>
+    <p>A Premier Model United Nations Conference</p>
+    <nav aria-label="Primary navigation">
+      <a href="#about" tabindex="0">About TIC</a>
+      <a href="#team" tabindex="0">Our Team</a>
+      <a href="#registration" tabindex="0">Registration</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About The Indian Conclave (TIC)</h2>
+      <p>
+        The Indian Conclave (TIC) is one of the most prestigious Model United Nations conferences in India, dedicated to fostering diplomacy, leadership, and global awareness among youth. 
+        Since its inception, TIC has been a platform where students from diverse backgrounds come together to simulate the workings of the United Nations, debate pressing international issues, and develop critical skills such as negotiation, public speaking, and research.
+      </p>
+      <p>
+        Our conference emphasizes inclusivity, intellectual rigor, and cultural exchange. Delegates engage in committees ranging from Security Council to specialized agencies, tackling real-world challenges like climate change, human rights, and global security. 
+        TIC is committed to creating an environment that nurtures future leaders who are empathetic, informed, and ready to make a positive impact on the world stage.
+      </p>
+      <p>
+        Beyond debate, TIC offers workshops, guest lectures by diplomats and experts, and networking opportunities that enrich the delegate experience. Join us to be part of a transformative journey that sharpens your skills and broadens your worldview.
+      </p>
+    </section>
+
+    <section id="team" aria-labelledby="team-title">
+      <h2 id="team-title">Meet Our Team</h2>
+      <div class="team-grid">
+        <!-- Founder -->
+        <article class="team-member" aria-label="Founder Priyamsingh">
+          <img src= alt="Photo of Priyamsingh, Founder of The Indian Conclave" />
+          <h3>Priyamsingh</h3>
+          <h4>Founder</h4>
+          <p>
+            Priyamsingh is the visionary founder of The Indian Conclave (TIC). With a passion for diplomacy and youth empowerment, he established TIC to provide a platform for students to engage in meaningful dialogue on global issues. 
+            His leadership and dedication have been instrumental in shaping TIC into a respected MUN conference known for its professionalism and inclusivity.
+          </p>
+          <p><strong>Contact:</strong> <a href="tel:+919318421372" style="color:#82aaff; text-decoration:underline;">+91 93184 21372</a></p>
+        </article>
+
+        <!-- Chief Adviser -->
+        <article class="team-member" aria-label="Co-founder Kartik Gautam">
+          <img src= alt="Photo of Kartik Gautam, Co-founder of The Indian Conclave" />
+          <h3>Kartik Gautam</h3>
+          <h4><Co-founder></Co-founder></h4>
+          <p>
+            Kartik Gautam serves as the Co-founder of TIC, bringing years of experience in international relations and education. 
+            He mentors the secretariat and delega2tes, ensuring the conference maintains high standards of debate and organization. 
+            Kartik’s guidance helps TIC foster a culture of respect, critical thinking, and diplomatic excellence.
+          </p>
+          <p>
+            His expertise in global affairs and commitment to youth development make him an invaluable pillar of TIC’s success.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="registration" aria-labelledby="registration-title">
+      <h2 id="registration-title">Get Involved</h2>
+      <p>
+        Whether you want to participate as a delegate or contribute as a member of the secretariat, TIC welcomes your enthusiasm and commitment. 
+        Please use the links below to register and become part of this inspiring event.
+      </p>
+      <div class="forms" role="list">
+        <a href="https://forms.gle/MSFJrcZ437HJuHWi8" target="_blank" rel="noopener noreferrer" class="form-link" role="listitem" aria-label="Secretariat Registration Form">
+          Secretariat Registration
+        </a>
+        <a href="https://forms.gle/mDSDyQdXHMBFYLZU8" target="_blank" rel="noopener noreferrer" class="form-link" role="listitem" aria-label="Delegate Registration Form">
+          Delegate Registration
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 The Indian Conclave (TIC). All rights reserved.
+  </footer>
+</body>
+</html>
